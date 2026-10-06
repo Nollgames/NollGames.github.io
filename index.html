@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="NOLLGAMES - Casual Mobile Game Company">
+  <title>NOLLGAMES | Mobile Game Company</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="#home"><img src="./images/brand/nollgames-logo.png" alt="NOLLGAMES"></a>
+    <button id="menuBtn" class="menu-btn" aria-label="메뉴 열기">☰</button>
+    <nav id="navMenu">
+      <a href="#games">GAMES</a>
+      <a href="#latest">LATEST</a>
+      <a href="#social">SOCIAL</a>
+      <a href="#support">SUPPORT</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="kicker">NOLLGAMES</span>
+        <h1>Play. Pop. Blast.<br>Just Have Fun.</h1>
+        <p>가볍게 시작하고 오래 즐길 수 있는 캐주얼 모바일 게임을 만듭니다.</p>
+        <div class="actions">
+          <a href="#games" class="btn primary">게임 보기</a>
+          <a id="heroYoutube" href="#" target="_blank" rel="noopener" class="btn secondary">YouTube</a>
+        </div>
+      </div>
+      <div class="hero-logo-card">
+        <img src="./images/brand/nollgames-logo.png" alt="NOLLGAMES Mobile Game Company">
+      </div>
+    </div>
+  </section>
+
+  <section id="games" class="section">
+    <div class="container">
+      <span class="kicker">GAMES</span>
+      <h2>Our Games</h2>
+      <div id="gamesGrid" class="games-grid"></div>
+    </div>
+  </section>
+
+  <section id="latest" class="section soft">
+    <div class="container">
+      <span class="kicker">LATEST</span>
+      <h2>Latest Video</h2>
+      <div class="video-grid">
+        <div class="video-frame">
+          <iframe id="youtubeEmbed" title="NOLLGAMES YouTube video" loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-copy">
+          <h3 id="latestTitle">NOLLGAMES Gameplay</h3>
+          <p>새로운 게임 플레이, 업데이트, VFX와 개발 소식을 YouTube에서 확인하세요.</p>
+          <a id="youtubeButton" class="btn primary" href="#" target="_blank" rel="noopener">YouTube 채널 보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="social" class="section">
+    <div class="container">
+      <span class="kicker">FOLLOW NOLLGAMES</span>
+      <h2>Social</h2>
+      <div class="social-grid">
+        <a id="socialYoutube" class="social-card" href="#" target="_blank" rel="noopener">
+          <strong>YouTube</strong>
+          <span>Gameplay · Shorts · Updates</span>
+        </a>
+        <a id="socialInstagram" class="social-card" href="#" target="_blank" rel="noopener">
+          <strong>Instagram</strong>
+          <span>Reels · Characters · Game Art</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="support" class="section soft">
+    <div class="container support">
+      <div>
+        <span class="kicker">SUPPORT</span>
+        <h2>Contact</h2>
+        <p>게임 및 비즈니스 문의</p>
+      </div>
+      <a id="supportEmail" class="btn primary" href="mailto:contact@example.com">contact@example.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <img src="./images/brand/nollgames-logo.png" alt="NOLLGAMES">
+    <span>© <span id="year"></span> NOLLGAMES. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="./js/site-config.js"></script>
+<script src="./js/games.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
