@@ -1,11 +1,15 @@
 window.NOLLGAMES_GAMES = [
   {
-    id: "sample-game",
-    title: "NEW MOBILE GAME",
-    genre: "Casual Game",
+    id: "nollpang",
+    title: "NOLLPANG",
+    genre: "Casual Puzzle Game",
     platforms: ["Android", "iOS"],
-    image: "./templates/instagram/post-1080x1350.png",
-    description: "새 게임 출시 시 이 항목을 복사해서 게임명, 장르, 이미지, 설명과 스토어 링크만 교체하세요.",
-    links: { googlePlay: "", appStore: "", detail: "" }
+    image: "./templates/instagram/nollpang_post-1080x1350.png",
+    description: "모으고, 터뜨리고, 도전하라!\n매일 즐거움이 팡팡 터지는 퍼즐, 놀팡!",
+    links: {
+      googlePlay: "https://play.google.com/store/apps/details?id=com.nollgames.nollpang",
+      appStore: "#",
+      detail: "#latest"
+    }
   }
 ];

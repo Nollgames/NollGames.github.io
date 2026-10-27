@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="NOLLGAMES - Casual Mobile Game Company">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>NOLLGAMES | Mobile Game Company</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -43,24 +44,133 @@
     <div class="container">
       <span class="kicker">GAMES</span>
       <h2>Our Games</h2>
-      <div id="gamesGrid" class="games-grid"></div>
+      <div id="gamesGrid" class="games-grid">
+        <article class="game-card">
+          <div class="game-img-wrap">
+            <img src="./templates/instagram/nollpang_post-1080x1350.png" alt="NOLLPANG" loading="lazy">
+          </div>
+          <div class="game-body">
+            <div class="game-meta">Casual Puzzle Game · Android · iOS</div>
+            <h3>NOLLPANG</h3>
+            <p>모으고, 터뜨리고, 도전하라!<br>매일 즐거움이 팡팡 터지는 퍼즐, 놀팡!</p>
+            <div class="game-links">
+              <a href="https://play.google.com/store/apps/details?id=com.nollgames.nollpang" target="_blank" rel="noopener">Google Play</a>
+              <a href="#latest">자세히 보기</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <section id="latest" class="section soft">
     <div class="container">
-      <span class="kicker">LATEST</span>
-      <h2>Latest Video</h2>
+      <div class="section-title-wrap">
+        <div>
+          <span class="kicker">LATEST</span>
+          <h2>Latest Video</h2>
+        </div>
+        <div class="playlist-meta-badge">
+          <span class="live-dot"></span>
+          <span>4개 영상 순차 자동 재생 (Auto Loop)</span>
+        </div>
+      </div>
+      <div id="localServerBanner" class="local-server-banner" style="display:none;">
+        <span>💡 <strong>로컬 웹 서버 실행 중:</strong> 브라우저 보안 정책으로 인한 영상 재생 제한을 방지하려면 로컬 서버로 접속하세요.</span>
+        <a href="http://localhost:8080/" class="btn-banner-link">http://localhost:8080 열기 ↗</a>
+      </div>
       <div class="video-grid">
-        <div class="video-frame">
-          <iframe id="youtubeEmbed" title="NOLLGAMES YouTube video" loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+        <div class="video-player-column">
+          <div class="video-frame-container">
+            <div class="video-badge-bar">
+              <span id="currentVideoBadge" class="video-badge">VIDEO 01 / 04</span>
+              <span class="video-badge-status">
+                <span class="pulse-indicator"></span>
+                <span id="playerStatusText">재생 대기 중 (클릭하여 재생)</span>
+              </span>
+            </div>
+            <div class="video-frame" id="videoFrameWrap">
+              <iframe id="youtubeEmbed" title="NOLLGAMES YouTube video"
+                frameborder="0"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+              <!-- 초기 썸네일 커버 (클릭 시 영상 재생 시작!) -->
+              <div id="videoCover" class="video-cover" role="button" tabindex="0" aria-label="클릭하여 영상 재생">
+                <div class="cover-bg-image" id="coverBg"></div>
+                <div class="cover-gradient"></div>
+                <div class="cover-center-content">
+                  <div class="play-btn-circle">
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <span class="cover-click-hint">클릭하여 영상 재생 ▶</span>
+                </div>
+                <div class="cover-footer">
+                  <div class="cover-current-info">
+                    <span id="coverCounterBadge" class="cover-tag">01 / 04</span>
+                    <span id="coverVideoTitle" class="cover-title">[놀팡] 장애물 제거 미션 - 스킬 올클리어</span>
+                  </div>
+                  <span class="cover-tip">영상 종료 시 자동 전환</span>
+                </div>
+              </div>
+              <!-- 재생 중 언제든 다음 영상으로 넘길 수 있는 플로팅 버튼 -->
+              <button id="floatingNextBtn" class="floating-next-btn" type="button" aria-label="다음 영상으로 넘어가기" style="display:none;">
+                <span>다음 영상</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+              </button>
+            </div>
+            <div class="video-player-controls">
+              <div class="controls-left">
+                <button id="prevVideoBtn" class="ctrl-btn" type="button" aria-label="이전 영상">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                  <span>이전</span>
+                </button>
+                <button id="playPauseBtn" class="ctrl-btn primary-ctrl" type="button" aria-label="재생/일시정지">
+                  <span id="playPauseIcon">▶</span>
+                  <span id="playPauseText">재생</span>
+                </button>
+                <button id="nextVideoBtn" class="ctrl-btn" type="button" aria-label="다음 영상으로 넘어가기">
+                  <span>다음 영상</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+                <button id="soundToggleBtn" class="ctrl-btn sound-btn" type="button" aria-label="음소거 토글">
+                  <span id="soundIcon">🔊</span>
+                  <span id="soundText">소리 켬</span>
+                </button>
+              </div>
+              <div class="controls-progress" id="playlistProgressSegments" aria-label="재생 진행 상태">
+                <div class="progress-segment active" data-index="0" title="1번 영상"></div>
+                <div class="progress-segment" data-index="1" title="2번 영상"></div>
+                <div class="progress-segment" data-index="2" title="3번 영상"></div>
+                <div class="progress-segment" data-index="3" title="4번 영상"></div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="video-copy">
-          <h3 id="latestTitle">NOLLGAMES Gameplay</h3>
-          <p>새로운 게임 플레이, 업데이트, VFX와 개발 소식을 YouTube에서 확인하세요.</p>
-          <a id="youtubeButton" class="btn primary" href="#" target="_blank" rel="noopener">YouTube 채널 보기</a>
+          <div class="now-playing-header">
+            <span class="kicker-small">NOW PLAYING</span>
+            <h3 id="latestTitle">NOLLGAMES Gameplay</h3>
+            <p id="latestDesc">새로운 게임 플레이, 업데이트, VFX와 개발 소식을 YouTube에서 확인하세요.</p>
+          </div>
+          
+          <div class="playlist-section-label">
+            <span>재생 목록 (순차 플레이)</span>
+            <span class="playlist-tip">클릭하여 바로 재생</span>
+          </div>
+          
+          <div id="playlistList" class="playlist-items">
+            <!-- 4개 영상 카드 동적 렌더링 -->
+          </div>
+
+          <div class="video-actions">
+            <a id="youtubeButton" class="btn primary full-width" href="#" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube 채널 바로가기
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -90,7 +200,7 @@
         <h2>Contact</h2>
         <p>게임 및 비즈니스 문의</p>
       </div>
-      <a id="supportEmail" class="btn primary" href="mailto:contact@example.com">contact@example.com</a>
+      <a id="supportEmail" class="btn primary" href="mailto:admin@nollgames.com">admin@nollgames.com</a>
     </div>
   </section>
 </main>
@@ -102,8 +212,8 @@
   </div>
 </footer>
 
-<script src="./js/site-config.js"></script>
-<script src="./js/games.js"></script>
-<script src="./js/main.js"></script>
+<script src="./js/site-config.js?v=20261027_2"></script>
+<script src="./js/games.js?v=20261027_2"></script>
+<script src="./js/main.js?v=20261027_2"></script>
 </body>
 </html>
