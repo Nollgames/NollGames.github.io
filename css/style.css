@@ -956,14 +956,25 @@ h3 {
   transform: translateY(-3px);
 }
 
-.social-youtube:hover {
+.social-youtube:hover,
+.channel-yt:hover {
   border-color: #ff0000;
   box-shadow: 0 16px 40px rgba(255, 0, 0, 0.12);
 }
 
-.social-instagram:hover {
+.social-instagram:hover,
+.channel-ig:hover {
   border-color: #e1306c;
   box-shadow: 0 16px 40px rgba(225, 48, 108, 0.15);
+}
+
+#channelYt,
+#channelIg,
+.channel-yt,
+.channel-ig {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .social-icon {
@@ -981,13 +992,15 @@ h3 {
   transform: scale(1.08);
 }
 
-.youtube-icon-box {
+.youtube-icon-box,
+.brand-icon-yt {
   background: #ff0000;
   color: white;
   box-shadow: 0 6px 18px rgba(255, 0, 0, 0.25);
 }
 
-.instagram-icon-box {
+.instagram-icon-box,
+.brand-icon-ig {
   background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   color: white;
   box-shadow: 0 6px 18px rgba(220, 39, 67, 0.3);
@@ -1036,12 +1049,14 @@ h3 {
   transform: translateX(3px);
 }
 
-.social-youtube:hover .social-arrow {
+.social-youtube:hover .social-arrow,
+.channel-yt:hover .social-arrow {
   background: #ff0000;
   color: white;
 }
 
-.social-instagram:hover .social-arrow {
+.social-instagram:hover .social-arrow,
+.channel-ig:hover .social-arrow {
   background: linear-gradient(45deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
   color: white;
 }

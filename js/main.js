@@ -24,15 +24,36 @@
   }
 
   // SNS 및 지원 링크 바인딩
-  ["#heroYoutube", "#youtubeButton", "#socialYoutube"].forEach(selector => {
+  ["#heroYoutube", "#youtubeButton", "#socialYoutube", "#channelYt"].forEach(selector => {
     const el = $(selector);
     if (el) el.href = config.youtubeUrl || "https://www.youtube.com/@NOLLPANG";
   });
 
-  ["#heroInstagram", "#socialInstagram"].forEach(selector => {
+  ["#heroInstagram", "#socialInstagram", "#channelIg"].forEach(selector => {
     const el = $(selector);
     if (el) el.href = config.instagramUrl || "https://www.instagram.com/nollpang/";
   });
+
+  // 광고 차단기(AdBlock / 소셜 필터)에 의해 인스타그램 카드가 숨겨지는 현상 원천 방지
+  const guardSocialCards = () => {
+    const ig = $("#channelIg") || $("#socialInstagram");
+    if (ig) {
+      ig.style.setProperty("display", "flex", "important");
+      ig.style.setProperty("visibility", "visible", "important");
+      ig.style.setProperty("opacity", "1", "important");
+    }
+    const yt = $("#channelYt") || $("#socialYoutube");
+    if (yt) {
+      yt.style.setProperty("display", "flex", "important");
+      yt.style.setProperty("visibility", "visible", "important");
+      yt.style.setProperty("opacity", "1", "important");
+    }
+  };
+  guardSocialCards();
+  window.addEventListener("DOMContentLoaded", guardSocialCards);
+  window.addEventListener("load", guardSocialCards);
+  setTimeout(guardSocialCards, 300);
+  setTimeout(guardSocialCards, 1000);
 
   const emailEl = $("#supportEmail");
   if (emailEl) {
