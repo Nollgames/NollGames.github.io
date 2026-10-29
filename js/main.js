@@ -29,8 +29,10 @@
     if (el) el.href = config.youtubeUrl || "https://www.youtube.com/@NOLLPANG";
   });
 
-  const igEl = $("#socialInstagram");
-  if (igEl) igEl.href = config.instagramUrl || "https://www.instagram.com/nollpang/";
+  ["#heroInstagram", "#socialInstagram"].forEach(selector => {
+    const el = $(selector);
+    if (el) el.href = config.instagramUrl || "https://www.instagram.com/nollpang/";
+  });
 
   const emailEl = $("#supportEmail");
   if (emailEl) {

@@ -194,6 +194,7 @@ h3 {
 /* Sections */
 .section {
   padding: 96px 0;
+  scroll-margin-top: 84px;
 }
 
 .soft {
@@ -931,32 +932,118 @@ h3 {
 /* Social & Support */
 .social-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
 .social-card {
-  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 26px;
   border: 1px solid #e7edf6;
   border-radius: 22px;
   background: white;
-  box-shadow: 0 12px 36px rgba(20, 34, 58, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 30px rgba(20, 34, 58, 0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  position: relative;
+  text-decoration: none;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .social-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 45px rgba(20, 34, 58, 0.1);
+  transform: translateY(-3px);
+}
+
+.social-youtube:hover {
+  border-color: #ff0000;
+  box-shadow: 0 16px 40px rgba(255, 0, 0, 0.12);
+}
+
+.social-instagram:hover {
+  border-color: #e1306c;
+  box-shadow: 0 16px 40px rgba(225, 48, 108, 0.15);
+}
+
+.social-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.22s ease;
+}
+
+.social-card:hover .social-icon {
+  transform: scale(1.08);
+}
+
+.youtube-icon-box {
+  background: #ff0000;
+  color: white;
+  box-shadow: 0 6px 18px rgba(255, 0, 0, 0.25);
+}
+
+.instagram-icon-box {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+  box-shadow: 0 6px 18px rgba(220, 39, 67, 0.3);
+}
+
+.social-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .social-card strong {
   display: block;
-  font-size: 26px;
-  margin-bottom: 7px;
+  font-size: 22px;
+  font-weight: 850;
+  color: #14223a;
+  line-height: 1.25;
+  margin-bottom: 4px;
 }
 
 .social-card span {
+  display: block;
+  font-size: 13.5px;
   color: #68758b;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.social-arrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f4f7fb;
+  color: #8a99b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.social-card:hover .social-arrow {
+  background: #14223a;
+  color: white;
+  transform: translateX(3px);
+}
+
+.social-youtube:hover .social-arrow {
+  background: #ff0000;
+  color: white;
+}
+
+.social-instagram:hover .social-arrow {
+  background: linear-gradient(45deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
+  color: white;
 }
 
 .support {
@@ -1048,8 +1135,7 @@ footer {
     justify-content: center;
   }
   
-  .games-grid,
-  .social-grid {
+  .games-grid {
     grid-template-columns: 1fr;
   }
   
@@ -1113,9 +1199,78 @@ footer {
     gap: 10px;
   }
 
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .actions .btn.primary {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 48px;
+    font-size: 15px;
+  }
+
+  .actions .btn.secondary {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 10px;
+    font-size: 14px;
+    justify-content: center;
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
   .social-card {
-    padding: 24px 20px;
-    border-radius: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 14px;
+    border-radius: 18px;
+    gap: 10px;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .social-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .social-text {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .social-card strong {
+    font-size: 17px;
+    margin-bottom: 2px;
+  }
+
+  .social-card span {
+    font-size: 11.5px;
+    line-height: 1.35;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .social-arrow {
+    display: none;
   }
 }
 
@@ -1148,17 +1303,7 @@ footer {
     line-height: 1.6;
   }
 
-  .actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
 
-  .actions .btn {
-    width: 100%;
-    min-height: 48px;
-    font-size: 15px;
-  }
 
   .hero-logo-card {
     padding: 20px 16px;
@@ -1291,6 +1436,54 @@ footer {
     font-size: 10.5px;
   }
 
+  /* 소셜 그리드 모바일 최적화 (스마트폰에서 YouTube & Instagram 나란히 100% 노출) */
+  .social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .social-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 12px;
+    gap: 10px;
+    border-radius: 18px;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .social-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .social-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .social-text {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .social-card strong {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  .social-card span {
+    font-size: 11px;
+    line-height: 1.35;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   /* 서포트 및 연락처 */
   .support {
     align-items: stretch;
@@ -1346,5 +1539,34 @@ footer {
   .ctrl-btn svg {
     width: 14px;
     height: 14px;
+  }
+
+  .social-grid {
+    gap: 8px;
+  }
+
+  .social-card {
+    padding: 13px 10px;
+    border-radius: 14px;
+    gap: 8px;
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .social-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .social-card strong {
+    font-size: 14.5px;
+  }
+
+  .social-card span {
+    font-size: 10px;
   }
 }
