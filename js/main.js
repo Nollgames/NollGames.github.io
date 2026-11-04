@@ -81,8 +81,11 @@
   // 게임 목록 렌더링
   const gamesGrid = $("#gamesGrid");
   if (gamesGrid && games.length > 0) {
-    const renderLink = (url, label) =>
-      url && url !== "#" ? `<a href="${esc(url)}" target="_blank" rel="noopener">${label}</a>` : "";
+    // Pages on this site (legal) open in the same tab; store links open a new tab.
+    const renderLink = (url, label, newTab = true) =>
+      url && url !== "#"
+        ? `<a href="${esc(url)}"${newTab ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`
+        : "";
 
     gamesGrid.innerHTML = games.map(g => `
       <article class="game-card">
@@ -99,6 +102,7 @@
             ${renderLink(g.links?.googlePlay, "Google Play")}
             ${renderLink(g.links?.appStore, "App Store")}
             ${renderLink(g.links?.detail, "자세히 보기")}
+            ${renderLink(g.links?.legal, "약관·개인정보", false)}
           </div>
         </div>
       </article>
